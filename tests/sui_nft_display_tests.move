@@ -1,18 +1,24 @@
-/*
-#[test_only]
-module sui_nft_display::sui_nft_display_tests;
-// uncomment this line to import the module
-// use sui_nft_display::sui_nft_display;
 
-const ENotImplemented: u64 = 0;
+#[test_only]
+module sui_nft_display::sui_nft_display_tests{
+
+use sui_nft_display::nft_display::{mintNFT, transferNFT, getNFTDescription, getNFTName, getNFTUrl};
+// 
+
+
+
+// const ENotImplemented: u64 = 0;
 
 #[test]
-fun test_sui_nft_display() {
-    // pass
-}
+fun test_mint_nft() {
+    //dummy TxContext for testing
+    let mut ctx = tx_context::dummy();
 
-#[test, expected_failure(abort_code = ::sui_nft_display::sui_nft_display_tests::ENotImplemented)]
-fun test_sui_nft_display_fail() {
-    abort ENotImplemented
+    //mimt a nft
+    mintNFT(b"Test nft", b"Test description", b"https://i.ibb.co/G5XQKqg/mithila.jpg", &mut ctx);
+   
+//check the values of nft
+    //  assert!(getNFTName(&nft) == b"Test nft".to_string(), 0);
+
 }
-*/
+}
